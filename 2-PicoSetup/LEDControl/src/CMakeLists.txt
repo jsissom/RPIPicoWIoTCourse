@@ -60,5 +60,5 @@ target_compile_definitions(${NAME} PRIVATE
 pico_add_extra_outputs(${NAME})
 
 # enable usb output, disable uart output
-pico_enable_stdio_usb(${NAME} 1)
-pico_enable_stdio_uart(${NAME} 0)
+pico_enable_stdio_usb(${NAME} 0)
+pico_enable_stdio_uart(${NAME} 1)

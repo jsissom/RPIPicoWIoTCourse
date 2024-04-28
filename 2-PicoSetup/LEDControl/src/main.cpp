@@ -53,7 +53,7 @@
 #endif
 
 // LED PAD defintions
-#define PULSE_LED  	   0
+#define PULSE_LED  	   2
 #define CONTROL_LED	  15
 
 

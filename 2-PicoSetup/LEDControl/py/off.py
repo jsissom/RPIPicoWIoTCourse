@@ -25,11 +25,11 @@ if (len(sys.argv) != 2):
 targetId = sys.argv[1]
 
 # Grab environment variables
-clientId=os.environ.get("MQTT_CLIENT")
-user=os.environ.get("MQTT_USER")
-passwd=os.environ.get("MQTT_PASSWD")
-host= os.environ.get("MQTT_HOST")
-port=int(os.environ.get("MQTT_PORT"))
+clientId = os.environ.get("MQTT_CLIENT")
+user = os.environ.get("MQTT_USER")
+passwd = os.environ.get("MQTT_PASSWD")
+host = os.environ.get("MQTT_HOST")
+port = int(os.environ.get("MQTT_PORT"))
 print("MQTT %s:%d"%(host,port))
 if (len(clientId) > 6):
    print("Client: %s..."%clientId[0:4])
@@ -45,7 +45,7 @@ subTopic = "TNG/" + targetId + "/#"
 ledTopic = "TNG/" + targetId + "/TPC/LED/req"
 
 # The callback for when the client receives a CONNACK response from the broker.
-def on_connect(client, userdata, flags, rc):
+def on_connect(client, userdata, flags, rc, properties):
     print("Connected with result code "+str(rc))
 
     
@@ -54,7 +54,7 @@ def on_message(client, userdata, msg):
     print("Rcv topic=" +msg.topic+" msg="+str(msg.payload))
 
 # Connect to the broker
-client = mqtt.Client(client_id=clientId)
+client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 client.username_pw_set(username=user, password=passwd)
 client.on_connect = on_connect
 client.on_message = on_message
